@@ -8,7 +8,7 @@ $client = DynamoDbClient::factory(array(
 
 
 $row = 1;
-if (($handle = fopen("stations_locations.csv", "r")) !== FALSE) {
+if (($handle = fopen("../stations_locations.csv", "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
         $stationName[] = $data[0];
         $mapX[] = $data[1];
@@ -32,7 +32,7 @@ for($i=1;$i<count($stationName)+1;$i++) {
           'latitude' => array('N' => $latitude[$i]),
           'longitude' => array('N' => $longitude[$i]),
           'london_zone' => array('N' => $londonZone[$i]),
-          'post_code' => array('S' => $postCode[$i]) 
+          'post_code' => array('S' => $postCode[$i])
       )
   ));
 }
