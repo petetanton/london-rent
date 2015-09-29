@@ -19,4 +19,6 @@ if (($handle = fopen("stations_locations.csv", "r")) !== FALSE) {
     fclose($handle);
 }
 print_r($stationName);
+
+echo "THIS IS A TEST";
 ?>
