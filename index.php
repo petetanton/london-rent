@@ -17,6 +17,6 @@ $response = $client->query(array(
     )
 ));
 
-print_r($response['Items']);
+var_dump($response);
 
 ?>
