@@ -36,7 +36,7 @@ for($i=1;$i<count($stationName)+1;$i++) {
           'map_y' => array('N' => $mapY[$i]),
           'latitude' => array('S' => $latitude[$i]),
           'longitude' => array('S' => $longitude[$i]),
-          'london_zone' => array('N' => $londonZone[$i]),
+          'london_zone' => array('S' => $londonZone[$i]),
           'post_code' => array('S' => $postCode[$i])
       )
   ));
