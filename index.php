@@ -14,7 +14,7 @@ $client = DynamoDbClient::factory(array(
 $response = $client->getItem(array(
  'TableName' => 'station_info',
  'Key' => array(
-     'london_zone' => array( 'S' => "1" )
+     'london_zone-index' => array( 'S' => "1" )
    )
  ));
 var_dump($response);
