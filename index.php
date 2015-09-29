@@ -1,22 +1,10 @@
 <?php
-include '/Users/tantop01/phpsite.php';
+ini_set('display_errors',1);
+ini_set('display_startup_errors',1);
+error_reporting(-1);
+include 'src/DatabaseControl';
 $zooplaKey = getenv("ZOOPLA_KEY");
+$dbControl = new DatabaseControl();
+var_dump($dbControl->getStationsByZone("1"));
 
-$row = 1;
-if (($handle = fopen("stations_locations.csv", "r")) !== FALSE) {
-    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-      if($data[5] == 1 && $data[0] == "Elephant and Castle") {
-        $stationName[] = $data[0];
-        $mapX[] = $data[1];
-        $mapY[] = $data[2];
-        $latitude[] = $data[3];
-        $longitude[] = $data[4];
-        $londonZone[] = $data[5];
-        $postCode[] = $data[6];
-      }
-      $row++;
-    }
-    fclose($handle);
-}
-print_r($stationName);
 ?>
