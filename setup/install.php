@@ -28,7 +28,7 @@ for($i=1;$i<count($stationName)+1;$i++) {
   $result = $client->putItem(array(
     'TableName' => 'station_info',
     'Item' => array(
-          'station_id'      => array('N' => $i),
+          'station_id'      => array('S' => $i),
           'station_name' => array('S' => $stationName[$i]),
           'map_x' => array('N' => $mapX[$i]),
           'map_y' => array('N' => $mapY[$i]),
