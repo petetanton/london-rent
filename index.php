@@ -14,11 +14,9 @@ $client = DynamoDbClient::factory(array(
 $response = $client->query(array(
     'TableName' => 'station_info',
     'KeyConditionExpression' => 'london_zone = :v_id',
-    'ExpressionAttributeValues' =>  array (
-        ':v_id' => array('S' => '1')
-      )
+    'ExpressionAttributeValues' =>  array (':v_id' => array('S' => '1'))
     )
-));
+);
 
 var_dump($response);
 
