@@ -23,9 +23,9 @@ $response = $client->query(array(
 );
 
 foreach ($response['Items'] as $item) {
-  echo "Station ---> " . $item['station_name']['S'] . PHP_EOL;
-  echo "Post Code ---> " . $item['post_code']['S'] . PHP_EOL;
-  echo PHP_EOL;
+  echo "Station ---> " . $item['station_name']['S'] . "</br>";
+  echo "Post Code ---> " . $item['post_code']['S'] . "<br>";
+  echo "</br>";
 }
 
 ?>
