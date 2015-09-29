@@ -13,7 +13,7 @@ $client = DynamoDbClient::factory(array(
 ));
 $response = $client->query(array(
     'TableName' => 'station_info',
-    'KeyConditionExpression' => 'statio_id = :v_id',
+    'KeyConditionExpression' => 'station_id = :v_id',
     'ExpressionAttributeValues' =>  array (':v_id' => array('S' => '1'))
     )
 );
