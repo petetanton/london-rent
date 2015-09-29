@@ -33,8 +33,8 @@ for($i=1;$i<count($stationName)+1;$i++) {
     'Item' => array(
           'station_id'      => array('S' => $i),
           'station_name' => array('S' => $stationName[$i]),
-          'map_x' => array('S' => $mapX[$i]),
-          'map_y' => array('S' => $mapY[$i]),
+          'map_x' => array('S' => (string)$mapX[$i]),
+          'map_y' => array('S' => (string)$mapY[$i]),
           'latitude' => array('S' => (string)$latitude[$i]),
           'longitude' => array('S' => (string)$longitude[$i]),
           'london_zone' => array('S' => $londonZone[$i]),
