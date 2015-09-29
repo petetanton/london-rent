@@ -8,6 +8,7 @@ use Aws\DynamoDb\DynamoDbClient;
 $client = DynamoDbClient::factory(array(
   'key'    => $aws_key,
   'secret' => $aws_secret,
+  'region' => 'eu-west-1'
 ));
 
 
