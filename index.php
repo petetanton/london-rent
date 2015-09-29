@@ -11,12 +11,12 @@ $client = DynamoDbClient::factory(array(
  'secret' => $aws_secret,
  'region' => 'eu-west-1'
 ));
-$response = $client->getItem(array(
- 'TableName' => 'station_info',
- 'Key' => array(
-     'london_zone-index' => array( 'S' => "1" )
-   )
- ));
-var_dump($response);
+$response = $client->query(array(
+    'TableName' => 'station_info',
+    'KeyConditionExpression' => 'lond_zone = 1'
+    )
+));
+
+print_r($response['Items']);
 
 ?>
