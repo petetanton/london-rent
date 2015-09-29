@@ -27,6 +27,7 @@ if (($handle = fopen("../stations_locations.csv", "r")) !== FALSE) {
     fclose($handle);
 }
 for($i=1;$i<count($stationName)+1;$i++) {
+  echo "<p>" . $stationName[$i] . "</p>";
   $result = $client->putItem(array(
     'TableName' => 'station_info',
     'Item' => array(
