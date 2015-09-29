@@ -22,6 +22,10 @@ $response = $client->query(array(
     )
 );
 
-var_dump($response);
+foreach ($response['Items'] as $item) {
+  echo "Station ---> " . $item['station_name']['S'] . PHP_EOL;
+  echo "Post Code ---> " . $item['post_code']['S'] . PHP_EOL;
+  echo PHP_EOL;
+}
 
 ?>
