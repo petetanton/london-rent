@@ -1,5 +1,5 @@
 <?php
-require "/aws/aws-autoloader.php";
+require "aws/aws-autoloader.php";
 require "../../cred.php";
 use Aws\DynamoDb\DynamoDbClient;
 class DatabaseControl {
