@@ -3,7 +3,7 @@ require "/aws/aws-autoloader.php";
 require "../../cred.php";
 use Aws\DynamoDb\DynamoDbClient;
 class DatabaseControl {
-  var $client = DynamoDbClient::factory(array(
+  var $client = new DynamoDbClient::factory(array(
     'key'    => $aws_key,
     'secret' => $aws_secret,
     'region' => 'eu-west-1'
