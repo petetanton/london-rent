@@ -13,13 +13,14 @@ $client = DynamoDbClient::factory(array(
 ));
 $response = $client->scan(array(
     'TableName' => 'station_info',
-    'KeyConditions' => array(
-      'ComparisonOperator' => ComparisonOperator::Contains,
-      'london_zone' => array(
-        'AttributeValueList' => array(
-          array(Type::STRING => '1')
-        ),
-      )
+      'ScanFilter' => array(
+		'london_zone' => array(
+			'ComparisonOperator' => AmazonDynamoDB::CONDITION_CONTAINS,
+			'AttributeValueList' => array(
+				array( AmazonDynamoDB::TYPE_STRING => '1' )
+			)
+		),
+	)
     ));
 //     'IndexName' => 'london_zone-index',
 //     'KeyConditionExpression' => '#dt = :v_dt',
