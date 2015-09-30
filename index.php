@@ -15,7 +15,7 @@ $response = $client->scan(array(
     'TableName' => 'station_info',
       'ScanFilter' => array(
 		'london_zone' => array(
-			'ComparisonOperator' => DynamoDbClient::CONDITION_CONTAINS,
+			'ComparisonOperator' => ComparisonOperator::CONTAINS,
 			'AttributeValueList' => array(
 				array( DynamoDbClient::TYPE_STRING => '1' )
 			)
