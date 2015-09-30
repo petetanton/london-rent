@@ -12,16 +12,10 @@ $client = DynamoDbClient::factory(array(
  'region' => 'eu-west-1'
 ));
 $response = $client->scan(array(
-    'TableName' => 'station_info',
-      'ScanFilter' => array(
-		'london_zone' => array(
-			'ComparisonOperator' => ComparisonOperator::CONTAINS,
-			'AttributeValueList' => array(
-				array( DynamoDbClient::TYPE_STRING => '1' )
-			)
-		),
+    'TableName' => 'station_info'
+
 	)
-    ));
+    );
 //     'IndexName' => 'london_zone-index',
 //     'KeyConditionExpression' => '#dt = :v_dt',
 //     'ExpressionAttributeNames' => array ('#dt' => 'london_zone'),
