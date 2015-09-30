@@ -11,16 +11,24 @@ $client = DynamoDbClient::factory(array(
  'secret' => $aws_secret,
  'region' => 'eu-west-1'
 ));
-$response = $client->query(array(
+$response = $client->scan(array(
     'TableName' => 'station_info',
-    'IndexName' => 'london_zone-index',
-    'KeyConditionExpression' => '#dt CONTAINS :v_dt',
-    'ExpressionAttributeNames' => array ('#dt' => 'london_zone'),
-    'ExpressionAttributeValues' =>  array (':v_dt' => array('S' => '1')),
-    'Select' => 'ALL_ATTRIBUTES',
-    'ScanIndexForward' => true,
-    )
-);
+    'KeyConditions' => array(
+      'ComparisonOperator' => ComparisonOperator::Contains,
+      'london_zone' => array(
+        'AttributeValueList' => array(
+          array(Type::STRING => '1')
+        ),
+      )
+    ));
+//     'IndexName' => 'london_zone-index',
+//     'KeyConditionExpression' => '#dt = :v_dt',
+//     'ExpressionAttributeNames' => array ('#dt' => 'london_zone'),
+//     'ExpressionAttributeValues' =>  array (':v_dt' => array('S' => '1')),
+//     'Select' => 'ALL_ATTRIBUTES',
+//     'ScanIndexForward' => true,
+//     )
+// );
 
 foreach ($response['Items'] as $item) {
   echo "Station ---> " . $item['station_name']['S'] . "</br>";
