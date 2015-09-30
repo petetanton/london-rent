@@ -24,10 +24,10 @@ $response = $client->scan(array(
 //     'ScanIndexForward' => true,
 //     )
 // );
-var_dump($response);
 foreach ($response['Items'] as $item) {
-  echo "Station ---> " . $item['station_name']['S'] . "</br>";
-  echo "Post Code ---> " . $item['post_code']['S'] . "<br>";
+  var_dump($item);
+  // echo "Station ---> " . $item['station_name']['S'] . "</br>";
+  // echo "Post Code ---> " . $item['post_code']['S'] . "<br>";
   echo "</br>";
 }
 
