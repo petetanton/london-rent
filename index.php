@@ -30,7 +30,7 @@ foreach ($response['Items'] as $item) {
     echo "Station ---> " . $item['station_name']['S'] . "</br>";
     echo "Post Code ---> " . $item['post_code']['S'] . "<br>";
     echo "London Zone ---> " . $item['london_zone']['S'] . "<br>";
-    echo "London Zone Search ---> " . strpos($item['london_zone']['S'],'1') . "<br>";
+    // echo "London Zone Search ---> " . strpos($item['london_zone']['S'],'1') . "<br>";
     echo "</br>";
   }
 
