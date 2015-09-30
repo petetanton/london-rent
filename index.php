@@ -32,7 +32,7 @@ foreach ($response['Items'] as $item) {
     echo "London Zone ---> " . $item['london_zone']['S'] . "<br>";
     echo "London Zone Search ---> " . strpos($item['london_zone']['S'],'1') . "<br>";
     echo "</br>";
-  // }
+  }
 
 }
 
