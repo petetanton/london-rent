@@ -25,7 +25,7 @@ $response = $client->scan(array(
 //     )
 // );
 foreach ($response['Items'] as $item) {
-  // die(var_dump($item['london_zone'][]));
+  die(var_dump($item['london_zone']['S']));
   if(strpos($item['london_zone']['S'],'1')) {
     echo "Station ---> " . $item['station_name']['S'] . "</br>";
     echo "Post Code ---> " . $item['post_code']['S'] . "<br>";
