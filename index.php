@@ -26,10 +26,11 @@ $response = $client->scan(array(
 // );
 foreach ($response['Items'] as $item) {
   // die($item['london_zone']['S']);
-  if(strpos($item['london_zone']['S'],'1') === 0) {
+  if(strpos($item['london_zone']['S'],'1') === 0 && $item['last_updated']['S'] < time()) {
     echo "Station ---> " . $item['station_name']['S'] . "</br>";
-    echo "Post Code ---> " . $item['post_code']['S'] . "<br>";
-    echo "London Zone ---> " . $item['london_zone']['S'] . "<br>";
+    echo "Post Code ---> " . $item['post_code']['S'] . "</br>";
+    echo "London Zone ---> " . $item['london_zone']['S'] . "</br>";
+    echo "Last Updated ---> " . date("Y-m-d H:i:s", strtotime($item['last_updated']['S'])) . "</br>";
     // echo "London Zone Search ---> " . strpos($item['london_zone']['S'],'1') . "<br>";
     echo "</br>";
   }
