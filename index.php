@@ -15,6 +15,9 @@ $client = DynamoDbClient::factory(array(
 $response = $client->scan(array(
     'TableName' => 'station_info'
 	)
+);$response = $client->scan(array(
+    'TableName' => 'station_info'
+	)
 );
 
 //     'IndexName' => 'london_zone-index',
