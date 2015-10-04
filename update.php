@@ -57,12 +57,6 @@ for ($j=0;$j<count($stations_postCode);$j++) {
     }
 
   }
-  // $xml_raw = $zoopla->getData($stations_postCode[$j],1,"rent",1,1);
-  // $listings = simplexml_load_file("tmp.xml");
-  // $listings = simplexml_load_string($xml_raw);
-  // var_dump($xml);
-  // var_dump($xml);
-  // echo $listings->listing[1]->description;
 
   $pageNo = 0;
   $run = true;
@@ -100,37 +94,7 @@ for ($j=0;$j<count($stations_postCode);$j++) {
         sleep(2);
         //break;      //temp to only make one api call
       }
-    //   var_dump($listingId);
-    //   echo '<br><br><br>';
-    //   var_dump($noBed);
-    //   echo '<br><br><br>';
-    //
-    //   var_dump($listingStatus);
-    //   echo '<br><br><br>';
-    //
-    //   var_dump(  $priceRentWeek);
-    //   echo '<br><br><br>';
-    //
-    //     var_dump($priceRentMonth);
-    //     echo '<br><br><br>';
-    //
-    //     var_dump($priceSale);
-    //     echo '<br><br><br>';
-    //
-    // var_dump($propertyType);
-    // echo '<br><br><br>';
-    //
-    //   var_dump($latitude);
-    //   echo '<br><br><br>';
-    //
-    //   var_dump($longitude);
-    //   echo '<br><br><br>';
-    //
-    //   var_dump($firstPublishedDate);
-    //   echo '<br><br><br>';
-    //
-    //   var_dump($lastPublishedDate);
-    //   die('done');
+
   $noOfProperties = 0;
   $sumOfRent = 0;
   for($i=0;$i<count($listingId);$i++) {
@@ -194,6 +158,7 @@ for ($j=0;$j<count($stations_postCode);$j++) {
 //       )
 //     )
 //   );
+  break;
 }
 
  ?>
