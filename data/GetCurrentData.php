@@ -38,11 +38,6 @@ foreach ($dbPropertyListings['Items'] as $item) {
     $listing_stationId[] = $item['station_id']['N'];
 }
 for($i=0;$i<count($stations_postCode);$i++) {
-    echo '<station>';
-    echo '<stationId>' . $stations_stationId[$i] . '</stationId>';
-    echo '<stationName>' . $stations_stationName[$i] . '</stationName>';
-    echo '<stationLondonZone>' . $stations_londonZone[$i] . '</stationLondonZone>';
-    echo '<stationPostCode>' . $stations_postCode[$i] . '</stationPostCode>';
     $noOfProperties = 0;
     $totalMonth = 0;
     for($j=0; $j<count($listing_listingId); $j++) {
@@ -51,13 +46,20 @@ for($i=0;$i<count($stations_postCode);$i++) {
             $totalMonth = $totalMonth + $listing_rentMonth[$i];
         }
     }
-    echo '<noOfListings>' . $noOfProperties . '</noOfListings>';
+
     if($noOfProperties == 0) {
         $averagePrice = 0;
     } else {
         $averagePrice = $totalMonth / $noOfProperties;
+        echo '<station>';
+        echo '<stationId>' . $stations_stationId[$i] . '</stationId>';
+        echo '<stationName>' . $stations_stationName[$i] . '</stationName>';
+        echo '<stationLondonZone>' . $stations_londonZone[$i] . '</stationLondonZone>';
+        echo '<stationPostCode>' . $stations_postCode[$i] . '</stationPostCode>';
+        echo '<noOfListings>' . $noOfProperties . '</noOfListings>';
+        echo '<averageMonthRent>' . $averagePrice . '</averageMonthRent>';
+        echo '</station>';
     }
-    echo '<averageMonthRent>' . $averagePrice . '</averageMonthRent>';
-    echo '</station>';
+
 }
 echo '</stations>';
