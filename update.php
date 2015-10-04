@@ -168,7 +168,7 @@ for ($j=0;$j<count($stations_postCode);$j++) {
   $putBatch->flush();
 
 //  error_log("Updating Station information");
-  $response = $client->updateItem([
+  $response = $client->updateItem(array(
       'TableName' => 'station_info',
       'Key' => [
           'station_id' => [ 'S' => $stations_stationId[$j] ]
@@ -178,7 +178,7 @@ for ($j=0;$j<count($stations_postCode);$j++) {
               'S' => (string)time()]
       ] ,
       'UpdateExpression' => 'set last_updated = :val1'
-  ]);
+  ));
 //  error_log($response);
 //  error_log("Station update complete");
  // die(var_dump($itemArray));
