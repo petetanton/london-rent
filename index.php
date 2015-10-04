@@ -2,6 +2,7 @@
 ini_set('display_errors',1);
 ini_set('display_startup_errors',1);
 error_reporting(-1);
+date_default_timezone_set("Europe/London");
 require "src/aws/aws-autoloader.php";
 require "../cred.php";
 use Aws\DynamoDb\DynamoDbClient;
@@ -13,9 +14,9 @@ $client = DynamoDbClient::factory(array(
 ));
 $response = $client->scan(array(
     'TableName' => 'station_info'
-
 	)
-    );
+);
+
 //     'IndexName' => 'london_zone-index',
 //     'KeyConditionExpression' => '#dt = :v_dt',
 //     'ExpressionAttributeNames' => array ('#dt' => 'london_zone'),
@@ -26,15 +27,22 @@ $response = $client->scan(array(
 // );
 foreach ($response['Items'] as $item) {
   // die($item['london_zone']['S']);
-  if(strpos($item['london_zone']['S'],'1') === 0 && $item['last_updated']['S'] < time()) {
+  if(strpos($item['london_zone']['S'],'1' ) === 0 && isset($item['last_updated'])) {
     echo "Station ---> " . $item['station_name']['S'] . "</br>";
     echo "Post Code ---> " . $item['post_code']['S'] . "</br>";
     echo "London Zone ---> " . $item['london_zone']['S'] . "</br>";
-    echo "Last Updated ---> " . date("Y-m-d H:i:s", strtotime($item['last_updated']['S'])) . "</br>";
-    // echo "London Zone Search ---> " . strpos($item['london_zone']['S'],'1') . "<br>";
+    if(isset($item['last_updated'])) {
+      echo "Last Updated ---> " . date("Y-m-d H:i:s", $item['last_updated']['S']) . "</br>";
+    }
+    echo "London Zone Search ---> " . strpos($item['london_zone']['S'],'1') . "<br>";
+    if (strpos($item['london_zone']['S'],'1') === false) {
+      echo 'false';
+    } else {
+      echo 'true';
+      
+    }
     echo "</br>";
   }
 
 }
-
 ?>
