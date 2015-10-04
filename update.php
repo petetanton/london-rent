@@ -98,7 +98,7 @@ for ($j=0;$j<count($stations_postCode);$j++) {
           break;
         }
         sleep(2);
-        break;      //temp to only make one api call
+        //break;      //temp to only make one api call
       }
     //   var_dump($listingId);
     //   echo '<br><br><br>';
@@ -170,13 +170,13 @@ for ($j=0;$j<count($stations_postCode);$j++) {
 //  error_log("Updating Station information");
   $response = $client->updateItem(array(
       'TableName' => 'station_info',
-      'Key' => [
-          'station_id' => [ 'S' => $stations_stationId[$j] ]
-      ],
-      'ExpressionAttributeValues' =>  [
-          ':val1' => [
-              'S' => (string)time()]
-      ] ,
+      'Key' => array(
+          'station_id' => array( 'S' => $stations_stationId[$j] )
+      ),
+      'ExpressionAttributeValues' =>  array(
+          ':val1' => array(
+              'S' => (string)time())
+      ) ,
       'UpdateExpression' => 'set last_updated = :val1'
   ));
 //  error_log($response);
