@@ -52,7 +52,12 @@ for($i=0;$i<count($stations_postCode);$i++) {
         }
     }
     echo '<noOfListings>' . $noOfProperties . '</noOfListings>';
-    echo '<averageMonthRent>' . $totalMonth / $noOfProperties . '</averageMonthRent>';
+    if($noOfProperties == 0) {
+        $averagePrice = 0;
+    } else {
+        $averagePrice = $totalMonth / $noOfProperties;
+    }
+    echo '<averageMonthRent>' . $averagePrice . '</averageMonthRent>';
     echo '</station>';
 }
 echo '</stations>';
