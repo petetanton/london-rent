@@ -14,6 +14,7 @@ $client = DynamoDbClient::factory(array(
 try {
     $dbStationInfo = $client->scan(array('TableName' => 'station_info'));
 } catch (\Aws\DynamoDb\Exception\DynamoDbException $e) {
+    header("Access-Control-Allow-Origin: *");
     header("ContentType: xml/text");
     die("<error><title>DynamoDB error</title><info>" . $e->getAwsErrorType() . "</info><code>" . $e->getAwsErrorCode() . "</code></error>");
 }
@@ -42,6 +43,8 @@ foreach ($dbStationInfo['Items'] as $item) {
 }
 if(!isset($stations_postCode)) { header("ContentType: xml/text"); die("<error><info>404: No data found</info></error>");}
 header("Content-type: text/xml");
+header("Access-Control-Allow-Origin: *");
+
 echo '<stations cache-time="' . date("Y-m-d H:i:s", time()) . '"    >';
 foreach ($dbPropertyListings['Items'] as $item) {
     $listing_listingId[] = $item['listing_id']['S'];
