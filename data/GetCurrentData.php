@@ -2,7 +2,7 @@
 ini_set('display_errors',1);
 ini_set('display_startup_errors',1);
 error_reporting(-1);
-date_default_timezone_set("Europe/London");
+date_default_timezone_set("UTC");
 require "../src/aws/aws-autoloader.php";
 require "../../cred.php";
 use Aws\DynamoDb\DynamoDbClient;
@@ -42,7 +42,7 @@ foreach ($dbStationInfo['Items'] as $item) {
 }
 if(!isset($stations_postCode)) { header("ContentType: xml/text"); die("<error><info>404: No data found</info></error>");}
 header("Content-type: text/xml");
-echo '<stations>';
+echo '<stations cache-time="' . date("Y-m-d H:i:s", time()) . '"    >';
 foreach ($dbPropertyListings['Items'] as $item) {
     $listing_listingId[] = $item['listing_id']['S'];
     $listing_noBeds[] = $item['no_bed']['S'];
