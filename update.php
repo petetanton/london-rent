@@ -34,7 +34,7 @@ foreach ($dbStationInfo['Items'] as $item) {
       } else {
         $stations_lastUpdate[] = 0;
       }
-      echo "London Zone Search ---> " . strpos($item['london_zone']['S'], '1') . "<br>";
+//      echo "London Zone Search ---> " . strpos($item['london_zone']['S'], '1') . "<br>";
     }
   }
 
@@ -97,6 +97,7 @@ for ($j=0;$j<count($stations_postCode);$j++) {
 
   $noOfProperties = 0;
   $sumOfRent = 0;
+  echo "<h1>Updating: " . $stations_stationName[$j] . " in zone(s): " . $stations_londonZone[$j] . "</h1>";
   for($i=0;$i<count($listingId);$i++) {
     echo "Listing ID: " . $listingId[$i] . " (" . $propertyType[$i] . ") rent per month £" . $priceRentMonth[$i] . "</br>";
     $sumOfRent += $priceRentMonth[$i];
