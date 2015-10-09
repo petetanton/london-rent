@@ -16,12 +16,13 @@ try {
 } catch (\Aws\DynamoDb\Exception\DynamoDbException $e) {
     header("Access-Control-Allow-Origin: *");
     header("ContentType: xml/text");
-    die("<error><title>DynamoDB error</title><info>" . $e->getAwsErrorType() . "</info><code>" . $e->getAwsErrorCode() . "</code></error>");
+    die("<error><title>DynamoDB error: Station Info</title><info>" . $e->getAwsErrorType() . "</info><code>" . $e->getAwsErrorCode() . "</code></error>");
 }
 try {
     $dbPropertyListings = $client->scan(array('TableName' => 'property_listings'));
 } catch (\Aws\DynamoDb\Exception\DynamoDbException $e) {
-    die("<error><title>DynamoDB error</title><info>" . $e->getAwsErrorType() . "</info><code>" . $e->getAwsErrorCode() . "</code></error>");
+    header("ContentType: xml/text");
+    die("<error><title>DynamoDB error: Property Listings</title><info>" . $e->getAwsErrorType() . "</info><code>" . $e->getAwsErrorCode() . "</code></error>");
 
 }
 
