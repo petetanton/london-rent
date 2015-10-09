@@ -28,7 +28,7 @@ try {
 
 
 foreach ($dbStationInfo['Items'] as $item) {
-    if(strpos($item['london_zone']['S'],'1' ) === 0 && isset($item['last_updated']['S'])) {
+    if(isset($item['last_updated']['S'])) {
         $stations_stationName[] = $item['station_name']['S'];
         $stations_postCode[] = $item['post_code']['S'];
         $stations_londonZone[] = $item['london_zone']['S'];
