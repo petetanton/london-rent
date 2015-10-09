@@ -22,7 +22,7 @@ $updateTime = time() - (7*24*3600);
 
 $dbStationInfo = $client->scan(array('TableName' => 'station_info'));
 foreach ($dbStationInfo['Items'] as $item) {
-  if(strpos($item['london_zone']['S'],'1' ) === 0 && isset($item['last_updated']['S'])) {
+  if(isset($item['last_updated']['S'])) {
     if (intval($item['last_updated']['S']) < $updateTime) {
 //      die($item['last_updated']['S'] . " : " . $updateTime);
       $stations_stationName[] = $item['station_name']['S'];
