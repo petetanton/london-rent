@@ -3,6 +3,7 @@ ini_set('display_errors',1);
 ini_set('display_startup_errors',1);
 error_reporting(-1);
 date_default_timezone_set("UTC");
+ini_set('max_execution_time', 300);
 require "src/aws/aws-autoloader.php";
 use Aws\DynamoDb\DynamoDbClient;
 use Aws\DynamoDb\Model\BatchRequest\WriteRequestBatch;
@@ -54,6 +55,7 @@ for ($j=0;$j<count($stations_postCode);$j++) {
             'listing_id' => array('S' => $item['listing_id']['S'])
           )
       ));
+      sleep(1);
     }
 
   }
